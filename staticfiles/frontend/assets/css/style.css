@@ -1,7 +1,6 @@
 /*==========
 
-Theme Name: DeCore - Architecture & Interior HTML5 Template
-Theme Version: 1.0
+Theme Name: Decore
 
 ==========*/
 
@@ -748,7 +747,7 @@ textarea.form-input {
     display: inline-block;
     float: left;
     position: relative;
-    margin: 0 7px;
+    margin: 0 12px;
 }
 
 .main-navigation .menu li:first-child {
@@ -1652,7 +1651,7 @@ textarea.form-input {
 }
 
 .footer-contact a.location-link {
-    max-width: 220px;
+    max-width: 275px;
 }
 
 .footer-contact {
@@ -3006,3 +3005,94 @@ font-weight: bolder;
 font-size: 25px;
 }
 
+.brandImageCustomWidth{
+    max-width: 60% !important;
+}
+
+
+/* //////////// Fixed floating menu ///////////// */
+
+.floating-menu {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 9999;
+}
+
+.main-btn {
+    width: 55px;
+    height: 55px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.main-btn:hover {
+    transform: scale(1.1);
+}
+
+.fab-icon {
+    width: 28px;
+    height: 28px;
+}
+
+.child-btns {
+    display: none;
+    flex-direction: column;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.child-btn {
+    width: 55px;
+    height: 55px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    animation: fadeIn 0.3s ease;
+}
+
+.child-btn i {
+    font-size: 36px;
+    color: white;
+    font-weight: 600;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.floating-msg-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+    transition: transform 0.3s ease;
+}
+
+.icon-container {
+    transition: transform 0.4s ease;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
