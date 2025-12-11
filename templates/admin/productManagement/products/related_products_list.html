@@ -1,0 +1,37 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+  <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+  › <a href="{% url 'admin:app_list' app_label='productManagement' %}">Product Management</a>
+  › <a href="{% url 'admin:productManagement_products_changelist' %}">Products</a>
+  › <a href="{% url 'admin:productManagement_products_change' product_id %}">{{product_id}}</a>
+  › Related Products
+</div>
+{% endblock %}
+
+{% block title %}Related Products | {{ block.super }}{% endblock %}
+{% block content %}
+
+  <a href="{% url 'admin:productManagement_products_change' product_id %}" class="btn btn-default mb-3">
+    ⬅️ Back to Products
+  </a>
+    <div class="container-fluid">
+        <section id="content" class="content">
+            <div class="row">
+                <div id="content-main" class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h1>Related products</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% load static %}
+
+<div class="tabular inline-related last-related">
+        <input type="hidden" name="productvariant_set-TOTAL_FORMS" value="4" id="id_productvariant_set-TOTAL_FORMS" autocomplete="off"><input type="hidden" name="productvariant_set-INITIAL_FORMS" value="3" id="id_productvariant_set-INITIAL_FORMS"><input type="hidden" name="productvariant_set-MIN_NUM_FORMS" value="0" id="id_productvariant_set-MIN_NUM_FORMS" autocomplete="off"><input type="hidden" name="productvariant_set-MAX_NUM_FORMS" value="1000" id="id_productvariant_set-MAX_NUM_FORMS" autocomplete="off">
+        <fieldset class="module ">
+            
+            <table class="table table-hover text-nowrap">
+                <thead>
+                    <tr>
+                        <th class="original"></th>
+                        <th class="column-attribute_id">sku</th>    
+                        <th class="column-value required">Quantity</th>
+                        <th class="column-value required">Price</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                 {% for p in child_products %}
+                    <tr class="form-row has_original dynamic-productvariant_set" id="productvariant_set-{{ forloop.counter }}">
+                        <td class="original">
+                            
+                            <input type="hidden" name="productvariant_set-{{ forloop.counter }}-id" value="{{p.id}}" id="id_productvariant_set-{{ forloop.counter }}-id">
+                            <input type="hidden" name="productvariant_set-{{ forloop.counter }}-product_id" value="{{product.id}}" id="id_productvariant_set-{{ forloop.counter }}-product_id">
+                            
+                        </td>
+                     
+                        <td class="field-attribute_id">
+                            <div class="related-widget-wrapper" data-model-ref="Attribute">
+                                <input type="text" name="productvariant_set-{{ forloop.counter }}-sku" value="{{p.sku}}" class="vTextField" maxlength="32" id="id_productvariant_set-{{ forloop.counter }}-sku">
+                            </div>
+                        </td>
+                        <td class="field-attribute_id">
+                            <div class="related-widget-wrapper" data-model-ref="Attribute">
+                                <input type="text" name="productvariant_set-{{ forloop.counter }}-quantity" value="{{p.quantity}}" class="vTextField" maxlength="32" id="id_productvariant_set-{{ forloop.counter }}-quantity">
+                            </div>
+                        </td>
+                        <td class="field-attribute_id">
+                            <div class="related-widget-wrapper" data-model-ref="Attribute">
+                                <input type="text" name="productvariant_set-{{ forloop.counter }}-price" value="{{p.price}}" class="vTextField" maxlength="32" id="id_productvariant_set-{{ forloop.counter }}-price">
+                            </div>
+                        </td>
+                      
+                    </tr>
+                 {% endfor %} 
+                 <!-- <tr class="add-row"><td colspan="3">
+                    <a href="#" class="btn btn-md btn-default float-right">Save</a></td>
+                </tr> -->
+                </tbody>
+            </table>
+        </fieldset>
+    </div>

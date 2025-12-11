@@ -1,0 +1,24 @@
+{% extends "admin/change_list.html" %}
+{% load i18n %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+  <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+  › <a href="{% url 'admin:app_list' app_label='productManagement' %}">Product Management</a>
+  {% if product %}
+  › <a href="{% url 'admin:productManagement_products_changelist' %}">Products</a>
+  › <a href="{% url 'admin:productManagement_products_change' product.id %}">{{product.name}}</a>
+  › Select Related Products
+  {% else %}
+  › Select Products
+  {% endif %}
+</div>
+{% endblock %}
+{% block title %}Related Products | {{ block.super }}{% endblock %}
+{% block content %}
+ {% if product %}
+<h1>Select Related Products For Product: {{product.name}}</h1>
+ {% else %}
+<h1>Select Products To Add Related Product.</h1>
+{% endif %}
+  {{ block.super }}  {# This renders the normal table of objects #}
+{% endblock %}

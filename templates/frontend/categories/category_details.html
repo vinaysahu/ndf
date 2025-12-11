@@ -1,0 +1,176 @@
+{% extends "frontend/common/base.html" %}
+
+{% block title %}
+{{category.seo_title}}
+{% endblock %}
+
+{% block seo_description %}{{category.seo_description}}{% endblock %}
+{% block seo_keywords %}{{category.seo_keywords}}{% endblock %}
+
+
+{% block content %}
+{% load static %}
+{% if banner %}
+    <!-- Start of Main Banner-->
+    <section class="inner-banner light-bg" id="home" style="background-image: url({{banner.image.url}});">
+        <div class="bg-overlay"></div>
+        <div class="sec-wp">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="banner-text p-0 text-center wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
+                            <h1 class="h1-title title-ani">Categories</h1>
+                            <div class="breadcrumb-wp mt-3">
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/" title="Home">Home</a> ›</li>
+                                    <li class="breadcrumb-item"><a href="/categories/" title="Categories">Categories</a> ›</li>
+                                    {% if category.parent_slug %}
+                                        <li class="breadcrumb-item"><a href="/categories/{{category.parent_slug}}" title="{{category.parent_name}}">{{category.parent_name}}</a> ›</li>
+                                    {% endif %}
+                                    <li class="breadcrumb-item active">{{category.name}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Of Main Banner-->
+{% endif %}
+    
+
+    <!-- Start categories section -->
+    {% comment %} <section class="process-sec light-bg section" id="process">
+        <div class="sec-wp">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-lg-6 m-auto">
+                        <div class="sec-title-text wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <h2 class="h2-title title-ani">{{ category.name }}</h2>
+                            <p>{{ category.short_description }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                
+                    
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="process-box wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <div class="process-title">
+                            {% if category.icon %}
+                                    <img width="23" height="36" src="{{ category.icon }}" alt="{{ category.name }}">
+                                {% else %}
+                                    <img width="23" height="36" src="{%  static '/frontend/assets/images/development.svg' %}" alt="{{ category.name }}">
+                                {% endif %}
+                            <h4 class="h4-title"> {{category.name}}</h4>
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-12 ">
+                                   <ul class="list-group">
+                                {% if category.has_sub_category %}
+                                    {% for sub_cat in category.sub_categories %}
+                                        <li class=""><a title="{{sub_cat.name}}" href="/categories/{{sub_cat.id}}">{{sub_cat.name}}</a></li>
+                                    {% endfor %}
+                                
+                                {% endif %}
+                                </ul>
+                                </div>
+                            </div>
+                           
+                            
+                            
+                        </div>
+                    </div>
+                    
+                
+                </div>
+            </div>
+        </div>
+    </section> {% endcomment %}
+    <!-- End of categories section -->
+
+    <!-- Start of About Us-->
+    <section class="about-us section" id="about">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-6 m-auto">
+                    <div class="sec-title-text wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <h2 class="h2-title title-ani">{{ category.name }}</h2>
+                        <p>{{ category.short_description }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+            {% if category.image %}
+                <div class="col-lg-6">
+                    <div class="about-left-part wow left-animation" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="hidden-box">
+                            <div class="ani-img-wrapper">
+                                <div class="about-img ani-image" style="background-image: url({{category.image}});">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-right-part wow right-animation" data-wow-duration="1s" data-wow-delay="0.3s">
+                        <div class="about-text">
+                            <p> {{ category.description }}</p>
+                             
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col-lg-12">
+                    <div class="about-right-part wow right-animation" data-wow-duration="1s" data-wow-delay="0.3s">
+                        <div class="about-text">
+                            <p> {{ category.description }}</p>
+                             
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+                
+            </div>
+        </div>
+    </section>
+    <!-- End Of About Us-->
+
+    <!-- Start of Team Sec-->
+    <section class="team-sec section" id="team">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-6 m-auto">
+                    <div class="sec-title-text wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <h2 class="h2-title title-ani">Products</h2>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                    {% for categoryProduct in categoryProducts %}
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="team-img " style="background-image: url({{categoryProduct.file.url}});">
+                                
+                            </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+        </div>
+    </section> 
+    <!-- End Of Team Sec -->
+
+   
+   {% include "frontend/common/sections/contact.html" %}
+   {% comment %} {% include "frontend/common/sections/count.html" %} {% endcomment %}
+   {% include "frontend/common/sections/brands.html" %}
+    
+
+{% endblock %}

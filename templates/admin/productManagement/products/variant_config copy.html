@@ -1,0 +1,136 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+  <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+  › <a href="{% url 'admin:app_list' app_label='productManagement' %}">Product Management</a>
+  › <a href="{% url 'admin:productManagement_products_changelist' %}">Products</a>
+  › <a href="{% url 'admin:productManagement_products_change' product_id %}">{{product_id}}</a>
+  › Variant Configuration
+</div>
+{% endblock %}
+
+{% block title %}Variant Configuration | {{ block.super }}{% endblock %}
+{% block content %}
+  <h1>🧩 Product Variant Configuration</h1>
+  <p>Yahan tum apna static admin page content likh sakte ho.</p>
+  <a href="{% url 'admin:productManagement_products_changelist' %}" class="button">
+    ⬅️ Back to Products
+  </a>
+
+{% if formType == 'Next' %}
+    <div class="container-fluid">
+        <section id="content" class="content">
+        <div class="row">
+            <div id="content-main" class="col-12">
+                <form action="" method="post" name="attribute_config" id="attribute_config" novalidate="">
+                    {% csrf_token %}
+                <div class="row">
+                    <div class="col-12 col-lg-9">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h1>Please select attribute Values</h1>
+                                    </div>
+                                </div>
+                                {% if error %}
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{error}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+                                {% endif %}
+                                <div class="form-group field-first_name">
+                                {% if attributesOptions %}
+                                    {% for attributesOption in attributesOptions %}
+                                    <!-- <div class="form-check" style="margin-top: 20px;"> -->
+                                      <span style="padding-right: 10px;">
+                                      <label class="form-check-label btn btn-outline-primary" for="attribute-value-{{attributesOption.id}}">
+                                        <input class="form-check-input btn-check" name="attributes-values" type="checkbox" value="{{attributesOption.value}}" id="attribute-value-{{attributesOption.id}}">
+                                        {{attributesOption.value}}
+                                      </label></span>
+                                    <!-- </div> -->
+                                    {% endfor %}
+                                {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Save" class="btn btn-success form-control" name="_save">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                    <div id="jazzy-actions" class="">
+        <div>
+    
+        <!-- <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-success form-control" name="_save">
+        </div> -->
+
+            </div>
+            </div>
+        </div>
+            </div>
+                </form>
+            </div>
+
+
+        </div>
+        </section>
+    </div>
+{% else %}
+    <div class="container-fluid">
+        <section id="content" class="content">
+        <div class="row">
+            <div id="content-main" class="col-12">
+                <form action="" method="post" name="attribute_config" id="attribute_config" novalidate="">
+                    {% csrf_token %}
+                <div class="row">
+                    <div class="col-12 col-lg-9">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h1>Please select attribute</h1>
+                                    </div>
+                                </div>
+                                {% if error %}
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{error}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+                                {% endif %}
+                                <div class="form-group field-first_name">
+                                {% if attributes %}
+                                    {% for attribute in attributes %}
+                                    <!-- <div class="form-check" style="margin-top: 20px;"> -->
+                                      <span style="padding-right: 10px;">
+                                      <label class="form-check-label btn btn-outline-primary" for="attribute-{{attribute.id}}">
+                                        <input class="form-check-input btn-check" name="attributes" type="checkbox" value="{{attribute.id}}" id="attribute-{{attribute.id}}">
+                                        {{attribute.name}}
+                                      </label></span>
+                                    <!-- </div> -->
+                                    {% endfor %}
+                                {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Next" class="btn btn-default form-control" name="_save">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+            </div>
+                </form>
+            </div>
+
+
+        </div>
+        </section>
+    </div>
+{% endif %}  
+{% endblock %}

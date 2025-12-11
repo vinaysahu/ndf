@@ -1,0 +1,23 @@
+{% load static %}
+ <!-- Start of Main Banner-->
+    {% if banner %}
+    <section class="main-banner" id="home" style="background-image: url({{banner.image.url}});">
+        <div class="gradient-overlay"></div>
+        <div class="sec-wp">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <div class="banner-text wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
+                            <h1 class="h1-title title-ani">{{banner.title}}.</h1>
+                            <p>{{banner.description}}</p>
+                            <div class="banner-btn">
+                                <a title="View Categories" href="categories" class="sec-btn">Explore Our Collection</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> 
+    {% endif %}
+    <!-- End Of Main Banner-->

@@ -1,0 +1,103 @@
+{% load static %}
+<footer class="site-footer">
+        <div class="top-footer">
+            <div class="container">
+                <div class="row g-0">
+                    <div class="col-lg-4">
+                        <div class="footer-about">
+                            <div class="footer-logo wow left-animation" data-wow-duration="1s" data-wow-delay="0.2s">
+                                <a title="DeCore" href="index.html">
+                                <img src="{% static 'frontend/assets/images/logo5.png' %}" alt="Logo">
+                                </a>
+                            </div>
+                             <div class="wow left-animation" data-wow-duration="1s" data-wow-delay="0.3s">
+                                <p>NEW DECORE FURNISHING Store is your ultimate destination for curtains, wallpapers, window blinds, upholstery, beds, sofas, mattresses, furniture, and interior decoration needs in Gurugram, Haryana. Our wide range of high-quality curtains will turn your space into a cozy sanctuary. We also offer exquisite wallpapers, premium window blinds, and expert interior decorators to bring elegance and style to your rooms.</p>
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="footer-info-part white-text">
+                            <div class="footer-navigation wow right-animation" data-wow-duration="1s" data-wow-delay="0.3s">
+                                <h3 class="footer-title">Navigation</h3>
+                                <ul>
+                                {% for cat in header_categories %}
+                                    <li><a class="{% if cat.active %} footer-active-menu {% endif %}" title="{{cat.name}}" href="{{cat.link}}">{{cat.name}}</a></li>
+                                    
+                                {% endfor %}
+                                    
+                                </ul>
+                            </div>
+
+                            <div class="footer-contact wow right-animation" data-wow-duration="1s" data-wow-delay="0.4s">
+                                <h3 class="footer-title">Contacts</h3>
+                                <ul>
+                                    <li>
+                                        <a title="1657 Kuhl Avenue Atlanta, GA 30310" href="#" class="location-link">
+                                            <span>
+                                                <svg data-name="locate location map pin" xmlns="http://www.w3.org/2000/svg" width="15" height="17.823" viewBox="0 0 15 17.823">
+                                                    <path data-name="Path 223" d="M17.8,5.124A7.5,7.5,0,0,0,7.194,15.73l2.795,2.795a.684.684,0,1,0,.968-.968L8.162,14.762a6.135,6.135,0,1,1,8.67,0l-4.819,4.819a.684.684,0,1,0,.968.968L17.8,15.73a7.5,7.5,0,0,0,0-10.606Z" transform="translate(-4.997 -2.927)" fill="var(--white-color)" />
+                                                    <path data-name="Path 224" d="M17.816,12.408a3.408,3.408,0,1,0-3.408,3.408,3.408,3.408,0,0,0,3.408-3.408Zm-5.453,0a2.045,2.045,0,1,1,2.045,2.045,2.045,2.045,0,0,1-2.045-2.045Z" transform="translate(-6.908 -4.861)" fill="var(--white-color)" />
+                                                </svg>
+                                            </span> Piller No 103, Dwarka Expy, near Conscient One mall, Ward 30, Block D, Rajendra Park, Sector 105, Gurugram, Haryana 122006
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="StephenARoyse@teleworm.us" href="#" class="location-link">
+                                            <span>
+                                                <svg data-name="mail email e-mail letter" xmlns="http://www.w3.org/2000/svg" width="18" height="12.462" viewBox="0 0 18 12.462">
+                                                    <path data-name="Path 225" d="M20.308,13a.692.692,0,0,0-.692.692v5.538a.692.692,0,0,1-.692.692H5.077a.692.692,0,0,1-.692-.692V13.692a.692.692,0,1,0-1.385,0v5.538a2.08,2.08,0,0,0,2.077,2.077H18.923A2.08,2.08,0,0,0,21,19.231V13.692A.692.692,0,0,0,20.308,13Z" transform="translate(-3 -8.846)" fill="var(--white-color)" />
+                                                    <path data-name="Path 226" d="M11.644,15.169a.692.692,0,0,0,.831,0l8.176-6.134a.692.692,0,0,0,.208-.852,2.119,2.119,0,0,0-.408-.575A2.077,2.077,0,0,0,18.982,7H5.136a2.077,2.077,0,0,0-1.468.609,2.118,2.118,0,0,0-.408.575.692.692,0,0,0,.208.852ZM5.136,8.385H18.982a.623.623,0,0,1,.194,0L12.059,13.75,4.942,8.385A.623.623,0,0,1,5.136,8.385Z" transform="translate(-3.059 -7)" fill="var(--white-color)" />
+                                                </svg>
+                                            </span> info@newdecorefurnishing.com
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="82950 03235" href="tel:82950 03235">
+                                            <span>
+                                                <svg data-name="phone celuler contact call" xmlns="http://www.w3.org/2000/svg" width="20" height="20.021" viewBox="0 0 20 20.021">
+                                                    <path data-name="Path 227" d="M22.038,5.461,20.264,3.688a2.344,2.344,0,0,0-3.547.273L14.991,6.305a2.344,2.344,0,0,0-.344,2.078l.1.3c.211.7.484,1.562.656,2.141a.781.781,0,0,1-.039.547,9.718,9.718,0,0,1-1.625,2.344.782.782,0,0,0,1.1,1.109,11.046,11.046,0,0,0,1.922-2.742,2.281,2.281,0,0,0,.133-1.7c-.164-.562-.445-1.453-.664-2.148l-.094-.3a.781.781,0,0,1,.148-.68l1.727-2.344a.781.781,0,0,1,1.18-.094l.523.523L18.155,7.758a.782.782,0,0,0,1.312.852L20.85,6.469l.125.117a2.023,2.023,0,0,1,.531,1.469c0,1.375-.93,3.906-5.258,8.156-4.539,4.453-8.14,6.25-9.633,4.742l-1.82-1.8a.776.776,0,0,1,.094-1.18L7.234,16.25a.781.781,0,0,1,.687-.117l1.477.461-1.664,1.18a.782.782,0,0,0,.9,1.281L11.6,16.969a.762.762,0,0,0-.219-1.375h0l-2.969-.953a2.344,2.344,0,0,0-2.078.344L3.992,16.711a2.344,2.344,0,0,0-.273,3.547l1.773,1.781a3.367,3.367,0,0,0,2.437.984c1.969,0,4.937-1.367,9.375-5.719,3.781-3.711,5.711-6.828,5.726-9.265a3.484,3.484,0,0,0-.992-2.578Z" transform="translate(-3.033 -3.003)" fill="var(--white-color)" />
+                                                </svg>
+                                            </span> 082950 03235
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="javascript:void(0)" id="scrollToTop" class="scrolltop">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+                    <g transform="translate(-1470 -529)">
+                        <g data-name="Ellipse 1" transform="translate(1470 529)" fill="none" stroke="var(--white-color)" stroke-width="3" opacity="0.3">
+                            <circle cx="50" cy="50" r="50" stroke="none" />
+                            <circle cx="50" cy="50" r="48.5" fill="none" />
+                        </g>
+                        <path data-name="Path 4" d="M17.753,41.631l-.5.5a.844.844,0,0,1-1.193,0l-5.867-5.9v26.43a.844.844,0,0,1-.844.844h-.7a.844.844,0,0,1-.844-.844V36.227l-5.867,5.9a.844.844,0,0,1-1.193,0l-.5-.5a.844.844,0,0,1,0-1.193L8.4,32.247a.844.844,0,0,1,1.193,0l8.156,8.19A.844.844,0,0,1,17.753,41.631Z" transform="translate(1511 531.5)" fill="#fff" />
+                    </g>
+                </svg>
+            </a>
+        </div>
+        <div class="bottom-footer">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="copyright-text">
+                            <p>Copyright © {% now "Y" %} <a href="#" title="NewDecoreFurnishing" target="_blank">NewDecoreFurnishing</a>. All Rights Reserved.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="social-icon">
+                            <ul>
+                                {% comment %} <li><a title="Follow On Facebook" href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a> </li>
+                                <li><a title="Follow On Twitter" href="javascript:void(0)"><i class="fab fa-twitter"></i></a></li> {% endcomment %}
+                                <li><a title="Follow On Instagram" href="https://www.instagram.com/ddecor_store2024/?igsh=MTFvcWNwODF2ZGEwdg%3D%3D"><i class="fab fa-instagram"></i></a></li>
+                                {% comment %} <li><a title="Follow On Iinkedin" href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a></li> {% endcomment %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>

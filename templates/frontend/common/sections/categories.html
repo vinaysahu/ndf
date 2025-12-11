@@ -1,0 +1,51 @@
+{% load static %}
+<!-- Start categories section -->
+    <section class="process-sec light-bg section" id="process">
+        <div class="sec-wp">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-lg-6 m-auto">
+                        <div class="sec-title-text wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <h2 class="h2-title title-ani">Categories</h2>
+                            <p>Explore thoughtfully curated decor essentials that elevate every room. From fabrics to flooring, experience style, comfort & luxury in one place.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                {% for category in categories %}
+                    {% if category.short_description %}
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="process-box wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <div class="process-title">
+                            
+                                {% if category.icon %}
+                                    <img width="23" height="36" src="{{ category.icon.url }}" alt="{{ category.name }}">
+                                {% else %}
+                                    <img width="23" height="36" src="{%  static '/frontend/assets/images/development.svg' %}" alt="{{ category.name }}">
+                                {% endif %}
+                                <a href="categories/{{ category.slug }}">
+                                <h4 class="h4-title"> {{category.name}}</h4>
+                                </a>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-12 truncate-2">
+                                    {{category.short_description}}
+                                </div>
+                            </div>
+                            
+                            <div class="row mt-3 mb-2">
+                            <div class="col-12 ">
+                                <a href="categories/{{ category.slug }}" class="btn btn-outline-secondary float-end text-decoration-none">Explore</a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of categories section -->

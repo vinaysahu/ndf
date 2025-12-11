@@ -1,0 +1,40 @@
+{% load static %}
+<header class="site-header sticky_head" id="header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="header-logo">
+                            <a title="DeCore" href="/"><img width="180" height="55" src="{% static '/frontend/assets/images/logo5.png' %}" alt="Logo"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <nav class="main-navigation">
+                            <button class="menu-toggle"><span></span><span></span><span></span></button>
+                            <div class="header-menu">
+                                <ul class="menu">
+                                
+                                {% for cat in header_categories %}
+                                    {% if cat.has_sub_category %}
+                                        <li class="dropdown-items">
+                                            <a class="{% if cat.active %} active-menu {% endif %}" title="{{cat.name}}" href="{{cat.link}}">{{cat.name}} {% comment %}  &nbsp; <span class="for-des">+</span> {% endcomment %} </a>  
+                                            <span class="for-mob dropdown-icon"><i class="fas fa-chevron-down"></i></span>
+                                            <ul class="sub-menu">
+                                                {% for sub_cat in cat.sub_categories %}
+                                                    <li><a title="{{sub_cat.name}}" href="{{sub_cat.link}}">{{sub_cat.name}}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                    </li>
+                                    {% else %}
+                                    <li><a class="{% if cat.active %} active-menu {% endif %}" title="{{cat.name}}" href="{{cat.link}}">{{cat.name}}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                                    
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>

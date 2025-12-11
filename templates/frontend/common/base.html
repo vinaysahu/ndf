@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title %}New Decore Furnishing | Curtain Store, Wallpaper, Window Blinds, Upholstery, Springwel Mattress Store in Gurugram{% endblock %}</title>
+    <meta name="description" content="{% block seo_description %}New Decore Furnishing is Gurugram’s leading store for premium curtains, wallpapers, window blinds, upholstery, furniture, interior décor, and Springwel mattresses. Get stylish home décor solutions, custom designs, and high-quality furnishings for your home or office. Visit us for complete interior transformation.{% endblock %}">
+    <meta name="keywords" content="{% block seo_keywords %}curtain store gurgaon, wallpaper shop in gurgaon, window blinds gurugram, upholstery store gurgaon, springwel mattress store gurgaon, home furnishing store gurgaon, interior decoration gurgaon, custom curtains gurugram, premium wallpaper gurgaon, sofa upholstery gurgaon, home decor shop gurgaon, blinds and curtains gurugram
+{% endblock %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    
+    <!-- FavIcon Link -->
+    <link rel="icon" href="{% static '/frontend/assets/images/favicon.png' %}" type="image/gif" sizes="46x46">
+
+    <!-- Google Fonts -->
+    <link href="{% static '/frontend/fonts/css2c31a.css' %}" rel="stylesheet">
+
+    <!-- Bootstrap CSS Link -->
+    <link rel="stylesheet" href="{% static '/frontend/assets/css/bootstrap.min.css' %}">
+
+    <!-- Swiper Slider CSS Link -->
+    <link rel="stylesheet" href="{% static '/frontend/assets/css/swiper-bundle.min.css' %}" />
+
+    <!-- Wow Animation CSS Link -->
+    <link rel="stylesheet" type="text/css" href="{% static '/frontend/assets/css/animate.min.css' %}">
+
+    <!-- Fancybox CSS Link -->
+    <link rel="stylesheet" type="text/css" href="{% static '/frontend/assets/css/jquery.fancybox.min.css' %}">
+
+    <!-- Main Style CSS Link -->
+    <link rel="stylesheet" href="{% static '/frontend/assets/css/style.css' %}">
+    <!-- Jquery JS Link -->
+    <script src="{% static '/frontend/assets/js/jquery-3.5.1.min.js' %}"></script>
+
+    <!-- Bootstrap JS Link -->
+
+    <script src="{% static '/frontend/assets/js/popper.min.js' %}"></script>
+    <script src="{% static '/frontend/assets/js/bootstrap.min.js' %}"></script>
+    
+
+    <!-- Font Awesome JS Link -->
+    <script src="{% static '/frontend/assets/js/font-awesome.min.js' %}"></script>
+
+</head>
+
+<body>
+
+    <div class="page-loader">
+        <img width="201" height="54" src="{% static '/frontend/assets/images/loading.svg' %}" alt="loading">
+    </div>
+
+    <!-- 🔥 COMMON HEADER -->
+    {% include "frontend/common/partials/header.html" %}
+
+    <!-- PAGE CONTENT -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- 🔥 COMMON FOOTER -->
+    {% include "frontend/common/partials/footer.html" %}
+<div class="floating-menu">
+<div class="child-btns" id="childButtons">
+        <a href="https://wa.me/9182950 03235" target="_blank" class="child-btn">
+            <i class="fa fa-whatsapp" aria-hidden="true"></i>
+        </a>
+        <a href="tel:+9182950 03235" class="child-btn">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+        </a>
+    </div>
+
+    <div class="main-btn" onclick="toggleFloatingMenu()">
+        
+        <div id="msgIcon" class="icon-container">
+        <!-- Message Icon -->
+        <svg id="messageSVG" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none">
+            <path d="M6 4h12a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H9l-4 3v-3H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3z"
+                    stroke="#ffffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="6" y1="8" x2="11" y2="8" stroke="#ffffffff" stroke-width="2" stroke-linecap="round"/>
+            <line x1="6" y1="12" x2="14" y2="12" stroke="#ffffffff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+
+
+        <!-- Cross Icon -->
+        <svg id="closeSVG" xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 52 52" style="display:none;">
+            <rect width="27.1433" height="3.89857" rx="1.94928" transform="translate(18.35 15.6599) scale(0.998038 1.00196) rotate(45)" fill="#ffffff"></rect>
+        <rect width="27.1433" height="3.89857" rx="1.94928" transform="translate(37.5056 18.422) scale(0.998038 1.00196) rotate(135)" fill="#ffffff"></rect>
+        </svg>
+        {% comment %} <svg id="closeSVG" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="26" cy="26" rx="26" ry="26" fill="#ffffffff"></ellipse>
+        <rect width="27.1433" height="3.89857" rx="1.94928" transform="translate(18.35 15.6599) scale(0.998038 1.00196) rotate(45)" fill="#ffffff"></rect>
+        <rect width="27.1433" height="3.89857" rx="1.94928" transform="translate(37.5056 18.422) scale(0.998038 1.00196) rotate(135)" fill="#ffffff"></rect>
+        </svg> {% endcomment %}
+    </div>
+    </div>
+
+    
+</div>
+
+<script>
+function toggleFloatingMenu() {
+    const menu = document.getElementById("childButtons");
+
+    if (menu.style.display === "flex") {
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "flex";
+    }
+
+    const messageSVG = document.getElementById("messageSVG");
+    const closeSVG = document.getElementById("closeSVG");
+    const iconBox = document.getElementById("msgIcon");
+
+    iconBox.classList.toggle("rotate");
+
+    if (messageSVG.style.display === "none") {
+        messageSVG.style.display = "block";
+        closeSVG.style.display = "none";
+    } else {
+        messageSVG.style.display = "none";
+        closeSVG.style.display = "block";
+    }
+}
+
+
+</script>
+
+    <!-- Common JS -->
+     
+    <!-- Swiper Slider JS Link -->
+    <script src="{% static '/frontend/assets/js/swiper-bundle.min.js' %}"></script>
+
+    <!-- Wow Animation JS Link -->
+    <script src="{% static '/frontend/assets/js/wow.min.js' %}"></script>
+
+    <!-- Fancybox JS Link -->
+    <script src="{% static '/frontend/assets/js/jquery.fancybox.min.js' %}"></script>
+
+    <!-- Counter JS Link -->
+    <script src="{% static '/frontend/assets/js/custom-scroll-count.js' %}"></script>
+
+    <!-- Mixitup js Link -->
+    <script src="{% static '/frontend/assets/js/jquery.mixitup.min.js' %}"></script>
+
+    <!-- Custom JS Link -->
+    <script src="{% static '/frontend/assets/js/custom.js' %}"></script>
+    
+</body>
+</html>

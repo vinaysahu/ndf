@@ -1,0 +1,93 @@
+{% extends "frontend/common/base.html" %}
+
+{% block title %}Home Furnishing Categories in Gurugram | Curtains, Wallpapers, Blinds, Upholstery & Mattresses – New Decore Furnishing{% endblock %}
+{% block seo_description %}Explore all home furnishing categories at New Decore Furnishing in Gurugram. Browse premium curtains, wallpapers, window blinds, upholstery fabrics, furniture, and Springwel mattresses—all in one place. Find the perfect décor and interior solutions to style and upgrade your home with comfort and elegance.{% endblock %}
+{% block seo_keywords %}home furnishing categories, furnishing store gurugram, curtains wallpapers blinds, upholstery fabrics gurgaon, home décor categories, mattress store gurugram, interior furnishing shop, New Decore Furnishing{% endblock %}
+
+{% block content %}
+{% load static %}
+{% if banner %}
+    <!-- Start of Main Banner-->
+    <section class="inner-banner light-bg" id="home" style="background-image: url({{banner.image.url}});">
+        <div class="bg-overlay"></div>
+        <div class="sec-wp">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="banner-text p-0 text-center wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.1s">
+                            <h1 class="h1-title title-ani">Categories</h1>
+                            <div class="breadcrumb-wp mt-3">
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/" title="Home">home</a> ›</li>
+                                    <li class="breadcrumb-item active">Categories</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Of Main Banner-->
+{% endif %}
+    
+<!-- Start categories section -->
+    <section class="process-sec light-bg section" id="process">
+        <div class="sec-wp">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-lg-6 m-auto">
+                        <div class="sec-title-text wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <h2 class="h2-title title-ani">Explore Our Collection</h2>
+                            <p>Discover our complete product range divided into easy categories.
+                                Sub-categories help you quickly find exactly what you're searching for.
+                                Browse, explore, and get inspired by our curated product collections.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                {% for cat in categories %}
+                    
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="process-box wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <div class="process-title">
+                            {% if cat.icon %}
+                                    <img width="23" height="36" src="{{ cat.icon }}" alt="{{ cat.name }}">
+                                {% else %}
+                                    <img width="23" height="36" src="{%  static '/frontend/assets/images/development.svg' %}" alt="{{ cat.name }}">
+                                {% endif %}
+                            <h4 class="h4-title"> {{cat.name}}</h4>
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-12 ">
+                                   <ul class="list-group">
+                                {% if cat.has_sub_category %}
+                                    {% for sub_cat in cat.sub_categories %}
+                                        <li class=""><a class="btn btn-link" title="{{sub_cat.name}}" href="/categories/{{sub_cat.slug}}">{{sub_cat.name}}</a></li>
+                                    {% endfor %}
+                                
+                                {% endif %}
+                                </ul>
+                                </div>
+                            </div>
+                           
+                            
+                            
+                        </div>
+                    </div>
+                    
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of categories section -->
+   
+   {% include "frontend/common/sections/about_us.html" %}
+   {% include "frontend/common/sections/contact.html" %}
+   {% comment %} {% include "frontend/common/sections/count.html" %} {% endcomment %}
+   {% include "frontend/common/sections/brands.html" %}
+
+{% endblock %}

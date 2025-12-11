@@ -1,0 +1,57 @@
+{% extends "admin/change_list.html" %}
+{% load i18n admin_urls static %}
+
+{% block breadcrumbs %}
+  {% if product_id %}
+    <div class="breadcrumbs">
+      <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a> ›
+      {% comment %} <a href="{% url 'admin:app_list' app_label=cl.opts.app_label %}">{{ cl.opts.app_config.verbose_name }}</a> › {% endcomment %}
+      <span>Related Products for Product ID {{ product_id }}</span>
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block object-tools-items %}
+  {{ block.super }}
+  {% if product_id %}
+    <li>
+      <a href="#" id="createRelatedBtn" class="button">Create Related Products</a>
+    </li>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% if product_id %}
+    {{ block.super }}
+  {% else %}
+    <div style="padding: 20px; text-align: center;">
+      <h2 style="color: #d9534f;">⚠️ No Product Selected</h2>
+      <p>Please select a product to view related products.</p>
+      <a href="{% url 'admin:index' %}" class="button" style="margin-top: 15px;">Go to Dashboard</a>
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block extrahead %}
+  {{ block.super }}
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const btn = document.getElementById("createRelatedBtn");
+      if (btn) {
+        btn.addEventListener("click", function() {
+          const selected = [...document.querySelectorAll('input.action-select:checked')].map(el => el.value);
+          if (selected.length === 0) {
+            alert("Please select at least one product to relate.");
+            return;
+          }
+          const confirmMsg = `You have selected ${selected.length} products. Proceed to create relations?`;
+          if (confirm(confirmMsg)) {
+            const form = document.querySelector('form#changelist-form');
+            form.action = window.location.href; // You can customize POST target
+            form.submit();
+          }
+        });
+      }
+    });
+  </script>
+{% endblock %}

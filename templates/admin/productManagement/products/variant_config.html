@@ -1,0 +1,135 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+  <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+  › <a href="{% url 'admin:app_list' app_label='productManagement' %}">Product Management</a>
+  › <a href="{% url 'admin:productManagement_products_changelist' %}">Products</a>
+  › <a href="{% url 'admin:productManagement_products_change' product_id %}">{{product_id}}</a>
+  › Variant Configuration
+</div>
+{% endblock %}
+
+{% block title %}Variant Configuration | {{ block.super }}{% endblock %}
+{% block content %}
+
+  <a href="{% url 'admin:productManagement_products_change' product_id %}#product-configurations-tab" class="btn btn-default mb-3">
+    ⬅️ Back to Products
+  </a>
+
+
+    <div class="container-fluid">
+        <section id="content" class="content">
+        <div class="row">
+            <div id="content-main" class="col-12">
+                <form action="" method="post" name="attribute_config" id="attribute_config" novalidate="">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-12 col-lg-9">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h1>Please select attribute and attribute values</h1>
+                                        </div>
+                                    </div>
+                                {% if form.non_field_errors %}
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    {{form.non_field_errors}}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                {% endif %}
+                                <div class="container">
+                                <div class="mb-3">
+                                    {{ form.attributes.label_tag }}
+                                        <div class="row">
+                                            {{ form.attributes }}
+                                        </div>
+                                            {% if form.attributes.errors %}
+                                                {{ form.attributes.errors }}
+                                            {% endif %}
+                                </div>
+                                <div class=" mb-3" id="attrValuesContainer" style="display:none;" >
+                                    {{ form.attribute_values.label_tag }}
+                                    <div class="row">
+                                        <div id="id_attribute_values">
+                                            {{ form.attribute_values }}
+                                            </div>
+                                    </div>
+                                    {% if form.attribute_values.errors %}
+                                                {{ form.attribute_values.errors }}
+                                            {% endif %}
+                                </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Save" class="btn btn-success form-control" name="_save">
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+        </section>
+    </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+    let selected = $("input[name='attributes']:checked").map(function(){return $(this).val();}).get();
+    let selectedAttrValues = $("input[name='attribute_values']:checked").map(function(){return $(this).val();}).get();
+    if(selected.length > 0){
+      $("#attrValuesContainer").show();
+
+      // AJAX call to get attribute values
+      $.ajax({
+        url: "{% url 'admin:get_attribute_values' %}",  // backend url
+        method: "POST",
+        data: {
+          'attrs[]': selected,
+          'attrVal[]' : selectedAttrValues,
+          'csrfmiddlewaretoken': '{{ csrf_token }}'
+        },
+        success: function(data){
+          $("#id_attribute_values").html(data.html);
+        }
+      });
+
+    } else {
+        $("#id_attribute_values").html('');
+        $("#attrValuesContainer").hide();
+    }
+  // jab attributes change ho tab call hoga
+  $("input[name='attributes']").change(function(){
+    let selected = $("input[name='attributes']:checked").map(function(){return $(this).val();}).get();
+    let selectedAttrValues = $("input[name='attribute_values']:checked").map(function(){return $(this).val();}).get();
+
+    if(selected.length > 0){
+      $("#attrValuesContainer").show();
+
+      // AJAX call to get attribute values
+      $.ajax({
+        url: "{% url 'admin:get_attribute_values' %}",  // backend url
+        method: "POST",
+        data: {
+          'attrs[]': selected,
+          'attrVal[]' : selectedAttrValues,
+          'csrfmiddlewaretoken': '{{ csrf_token }}'
+        },
+        success: function(data){
+          $("#id_attribute_values").html(data.html);
+        }
+      });
+
+    } else {
+        $("#id_attribute_values").html('');
+        $("#attrValuesContainer").hide();
+    }
+  });
+});
+</script>
+{% endblock %}
