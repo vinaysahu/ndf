@@ -3,6 +3,8 @@
 from django.db import migrations
 from globals.models.Categories import Categories
 from globals.models.CategoryMedia import CategoryMedia
+from banners.models.BannerPositions import BannerPositions
+from banners.models.Banners import Banners
 
 def load_initial_data(apps, schema_editor):
     if hasattr(Categories, "INITIAL_DATA"):
@@ -25,6 +27,23 @@ def load_initial_data(apps, schema_editor):
                 defaults = {k: v for k, v in row.items() if k != "id"}
 
                 CategoryMedia.objects.get_or_create(id=row_id, defaults=defaults)
+
+    if hasattr(BannerPositions, "INITIAL_DATA"):
+        initial_data = getattr(BannerPositions, "INITIAL_DATA")
+        for row in initial_data:
+            # Ensure ID is used separately
+            row_id = row.get("id")
+            defaults = {k: v for k, v in row.items() if k != "id"}
+
+            BannerPositions.objects.get_or_create(id=row_id, defaults=defaults)
+        if hasattr(Banners, "INITIAL_DATA"):
+            initial_data = getattr(Banners, "INITIAL_DATA")
+            for row in initial_data:
+                # Ensure ID is used separately
+                row_id = row.get("id")
+                defaults = {k: v for k, v in row.items() if k != "id"}
+
+                Banners.objects.get_or_create(id=row_id, defaults=defaults)
 
 
 

@@ -26,4 +26,8 @@ class BannerPositions(models.Model):
     def __str__(self):
         return self.name
     
+    INITIAL_DATA=[
+        {"name": "HOME_PAGE_BANNER",'status': 10}
+        ]
+    
 

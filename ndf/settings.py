@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['13.205.19.22','127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    "common.apps.CommonConfig",
+    # "common.apps.CommonConfig",
     "globals.apps.GlobalsConfig",
     "banners.apps.BannersConfig",
     'jazzmin',

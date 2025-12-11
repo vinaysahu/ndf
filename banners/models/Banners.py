@@ -33,4 +33,36 @@ class Banners(models.Model):
     def __str__(self):
         return self.title
     
+    INITIAL_DATA=[
+  {
+    "id": 1,
+    "title": "Beautiful Spaces Begin With Us",
+    "image": "images/banners/banner-bg.jpg",
+    "link_url": "ddasd",
+    "btn_title": "Learn More",
+    "description": "Looking for curtains, blinds, wallpapers, fabrics, or upholstery?\r\nStart by browsing our categories and discover the best options for your home.",
+    "display_order": 1,
+    "status": 10,
+    "banner_position_id_id": 1
+  },
+  {
+    "id": 2,
+    "title": "Second Slide Title",
+    "image": "images/banners/banner-bg_yH6uvTe.jpg",
+    "link_url": "dsfdf",
+    "btn_title": "Learn More",
+    "description": "Explore thoughtfully curated decor essentials that elevate every room. From fabrics to flooring, experience style, comfort & luxury in one place.",
+    "status": 10,
+    "banner_position_id_id": 1
+  },
+  {
+    "id": 3,
+    "title": "Third Slide Title",
+    "image": "images/banners/banner-bg_AkimyA8.jpg",
+    "description": "Explore thoughtfully curated decor essentials that elevate every room. From fabrics to flooring, experience style, comfort & luxury in one place.",
+    "status": 10,
+    "banner_position_id_id": 1
+  }
+]
+    
 
