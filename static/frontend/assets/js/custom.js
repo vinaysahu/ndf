@@ -1,6 +1,6 @@
 /*==========
 
-Theme Name: DeCore - Architecture & Interior HTML5 Template
+Theme Name: DeCor - Architecture & Interior HTML5 Template
 Theme Version: 1.0
 
 ==========*/

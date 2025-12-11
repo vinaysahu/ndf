@@ -47,13 +47,13 @@ INSTALLED_APPS = [
 
 JAZZMIN_SETTINGS = {
     
-    "welcome_sign": "Welcome to New Decore Furnishing",
+    "welcome_sign": "Welcome to New Decor Furnishing",
     "show_sidebar": True,
     "navigation_expanded": False,
     "show_ui_builder": True,
 
-    "site_title": "New Decore Furnishing Admin",
-    "site_header": "New Decore Furnishing",
+    "site_title": "New Decor Furnishing Admin",
+    "site_header": "New Decor Furnishing",
     "site_logo": "frontend/assets/images/logo5.png",  # Relative to STATIC_URL
     "site_logo_classes": " bg-white",  # Optional
     "login_logo": "frontend/assets/images/logo5.png",       # Login page logo
