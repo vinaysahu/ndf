@@ -12,7 +12,23 @@
                 </div>
             </div>
 
-            <div class="reviews-slider-row wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.3s">
+            <!-- Elfsight Google Reviews | Untitled Google Reviews -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-ee90f032-5c14-4d04-ac8b-63d3ecf8890c" data-elfsight-app-lazy></div>
+
+<script>
+    $(document).ready(function () {
+    const observer = new MutationObserver(function () {
+        $('a[href*="elfsight.com"]').hide();
+        $('a[href*="free-widget"]').hide();
+        $('a[href*="google-reviews-widget"]').hide();
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+});
+</script>
+
+            {% comment %} <div class="reviews-slider-row wow fadeup-animation" data-wow-duration="1s" data-wow-delay="0.3s">
                 <div class="reviews-slider">
                     <div class="swiper-wrapper">
                         <div class="reviews-box swiper-slide">
@@ -63,7 +79,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div> {% endcomment %}
         </div>
     </section>
     <!-- End Of Reviews Sec-->
