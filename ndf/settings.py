@@ -29,6 +29,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['13.205.19.22','127.0.0.1','newdecorfurnishing.com','www.newdecorfurnishing.com']
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://newdecorfurnishing.com",
+    "https://www.newdecorfurnishing.com",
+]
 
 # Application definition
 
