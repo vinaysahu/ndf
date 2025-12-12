@@ -1,6 +1,7 @@
 from .models.Categories import Categories
 
 def categories_processor(request):
+    print("request.path: ", request.path)
     current_category_slug = request.resolver_match.kwargs.get("slug", None)
     # print("current_category_id",current_category_id)
     categories = Categories.objects.filter(parent_id_id=None, status=Categories.STATUS_CHOICES_ID['active'])
@@ -11,7 +12,7 @@ def categories_processor(request):
         "name": "Home",
         "link":"/",
         "contact": False,
-        "active":False if current_category_slug else True,
+        "active":True if request.path == '/' else False,
         "sub_categories": list()
     }]
 
@@ -58,9 +59,9 @@ def categories_processor(request):
             "id": 'contact',
             "has_sub_category":False,
             "name": 'contact',
-            "link":f"/contacts",
+            "link":f"/contacts/",
             "contact": False,
-            "active":True if request.path == "/contacts" else False,
+            "active":True if request.path == "/contacts/" else False,
             "sub_categories": ''
         })
     return {
