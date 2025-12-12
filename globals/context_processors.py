@@ -60,7 +60,7 @@ def categories_processor(request):
             "name": 'contact',
             "link":f"/contacts",
             "contact": False,
-            "active":False,
+            "active":True if request.path == "/contacts" else False,
             "sub_categories": ''
         })
     return {
