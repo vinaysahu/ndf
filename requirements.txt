@@ -2,3 +2,4 @@ cryptography
 django-jazzmin
 django-debug-toolbar
 Pillow
+requests
